@@ -1,0 +1,20 @@
+<!--<p>Resultado: {{valor[0]}}</p>
+<p *ngFor="let valo of valor">{{valo}}</p>-->
+
+<div class="mx-auto">
+    <div *ngFor="let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="card">
+        <div class="card-body">
+            <a (click)="open(auto)"><i class="fa fa-eye fa-3x"></i></a>
+            <h3 class="my-auto">{{auto?.descripcion}}</h3>
+        </div>
+    </div>
+</div>
+<br>
+
+<div style="margin-left: 20px;">
+  <ngb-pagination aria-label="Default pagination"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="autos.length">
+  </ngb-pagination>
+</div>
