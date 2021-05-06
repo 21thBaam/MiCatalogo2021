@@ -10,10 +10,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let auto of autos |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+            <td></td>
             <td>{{ auto?.marca }}</td>
             <td>{{ auto?.submarca}}</td>
             <td>{{ auto?.descripcion}}</td>
-            <td>{{ auto?.modelo }}</td>
+            <td>{{ auto?.modelos }}</td>
             <td class="actions"><i class="fa fa-trash fa-2x"></i></td>
             <td class="actions"><i class="fa fa-edit fa-2x"></i></td>
         </tr>

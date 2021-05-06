@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AUTOMOVILES} from '../../../assets/data';
+//import {AUTOMOVILES} from '../../../assets/data';
 import {Automovil} from '../../interfaces/models'
+import {AutosService} from '../../services/autos.service';
 
 @Component({
   selector: 'app-table',
@@ -13,12 +14,20 @@ export class TableComponent implements OnInit {
   page: number = {} as number;
   pageSize: number = {} as number;
   searchText: any;
-  constructor() { }
+
+  constructor(private autosService: AutosService) { }
 
   ngOnInit() {
     this.page = 1;
     this.pageSize = 10;
-    this.autos = AUTOMOVILES;
+
+    this.autosService.getAutos().subscribe((res) => {
+      if(res){
+        this.autos = res.data;
+      }else{
+        console.log("Respuesta ERROR");
+      }
+    });
   }
 
 }
